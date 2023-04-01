@@ -17,9 +17,7 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@features/*": ["features/*"],
-      "@assets/*": ["assets/*"],
-      "@hooks/*": ["hooks/*"]
+      "@/*": ["*"]
     }
   },
   "include": ["src"],

@@ -1,6 +1,6 @@
-import reactLogo from '@assets/react.svg'
-import { increment } from '@features/counter/counter-slice'
-import { useAppDispatch, useAppSelector } from '@hooks/redux'
+import reactLogo from '@/assets/react.svg'
+import { increment } from '@/features/counter/counter-slice'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import 'App.css'
 import viteLogo from '/vite.svg'
 
