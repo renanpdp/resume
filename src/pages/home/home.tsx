@@ -1,12 +1,12 @@
 import reactLogo from '@/assets/react.svg'
-import { increment } from '@/features/counter/counter-slice'
-import { useAppDispatch, useAppSelector } from '@/hooks/redux'
-import viteLogo from '/vite.svg'
+import { increment, selectCount } from '@/features/counter/counter-slice'
+import { useAppDispatch, useAppSelector } from '@/hooks'
 import style from './home.module.css'
+import viteLogo from '/vite.svg'
 
 const Home = () => {
   const dispatch = useAppDispatch()
-  const count = useAppSelector((state) => state.counter.count)
+  const count = useAppSelector(selectCount)
 
   return (
     <div>

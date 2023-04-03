@@ -1,4 +1,4 @@
-import store from '@/store'
+import { setupStore } from '@/store'
 import { render, RenderOptions } from '@testing-library/react'
 import React, { ReactElement } from 'react'
 import { Provider } from 'react-redux'
@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Provider store={store}>
+    <Provider store={setupStore()}>
       <BrowserRouter>
         {children}
       </BrowserRouter>
@@ -14,10 +14,7 @@ const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-const customRender = (
+export const renderWithProviders = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
 ) => render(ui, { wrapper: AllTheProviders, ...options })
-
-export * from '@testing-library/react'
-export { customRender as render }

@@ -1,13 +1,21 @@
 import counterReducer from '@/features/counter/counter-slice'
-import { configureStore } from '@reduxjs/toolkit'
+import {
+  PreloadedState,
+  combineReducers,
+  configureStore,
+} from '@reduxjs/toolkit'
 
-const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+const rootReducer = combineReducers({
+  counter: counterReducer,
 })
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export function setupStore(preloadedState?: PreloadedState<RootState>) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  })
+}
 
-export default store
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch']
