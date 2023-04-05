@@ -18,4 +18,19 @@ describe('Home page tests', () => {
     // Post expectations
     expect(buttonCount.innerHTML).toBe('count is 2')
   })
+
+  it('Should render page correctly with preloaded state', async () => {
+    // Setup
+    renderWithProviders(<Home />, { preloadedState: { counter: { count: 1 } } })
+    const buttonCount = await screen.findByRole('button')
+
+    // Pre expectations
+    expect(buttonCount.innerHTML).toBe('count is 1')
+
+    // Init
+    fireEvent.click(buttonCount)
+
+    // Post expectations
+    expect(buttonCount.innerHTML).toBe('count is 2')
+  })
 })
